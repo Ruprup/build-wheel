@@ -10,56 +10,29 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0f0f0f;
-    --bg2: #161616;
-    --bg3: #1e1e1e;
-    --border: #2a2a2a;
-    --border2: #333;
-    --text: #e8e4dc;
-    --text2: #8a8680;
-    --text3: #555;
-    --accent: #c8b89a;
+    --bg: #faf9f7;
+    --bg2: #f2f0ec;
+    --bg3: #eae7e1;
+    --border: #dedad3;
+    --border2: #c8c3ba;
+    --text: #1a1916;
+    --text2: #6b6760;
+    --text3: #a8a49e;
+    --accent: #3d3a35;
 
-    --mood-bg: #2a1f0a; --mood-border: #5a3e1a; --mood-text: #d4a86a;
-    --type-bg: #0d1a2a; --type-border: #1e3a5a; --type-text: #6aabdb;
-    --style-bg: #0a2018; --style-border: #1a4a30; --style-text: #6ac49a;
-    --rel-bg: #1e1a2a; --rel-border: #3a3050; --rel-text: #9a8acc;
-    --ctx-bg: #2a0f0f; --ctx-border: #5a2020; --ctx-text: #d47a7a;
-    --tech-bg: #1a1a0a; --tech-border: #3a3a18; --tech-text: #c4c47a;
+    --mood-bg: #fdf4e7; --mood-border: #e8c97a; --mood-text: #7a5010;
+    --type-bg: #e8f2fb; --type-border: #8ab8e0; --type-text: #1a4a72;
+    --style-bg: #e8f6ee; --style-border: #7ac4a0; --style-text: #0f4a2e;
+    --rel-bg:  #f0eef8; --rel-border:  #b0a8d8; --rel-text:  #3a2e6a;
+    --ctx-bg:  #fceeed; --ctx-border:  #e0a0a0; --ctx-text:  #6a1e1e;
+    --tech-bg: #f8f8e8; --tech-border: #c8c87a; --tech-text: #4a4a0a;
   }
-
-  html { scroll-behavior: smooth; }
 
   body {
     background: var(--bg);
     color: var(--text);
     font-family: 'DM Mono', monospace;
     min-height: 100vh;
-    padding: 0;
-  }
-
-  header {
-    border-bottom: 1px solid var(--border);
-    padding: 2rem 3rem;
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-  }
-
-  header h1 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.5rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-
-  header span {
-    font-size: 0.7rem;
-    color: var(--text3);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
   }
 
   main {
@@ -76,16 +49,11 @@
     margin-bottom: 1.5rem;
   }
 
-  .prompt-area {
-    margin-bottom: 3rem;
-  }
-
   .sentence {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
     gap: 0.6rem 0.5rem;
-    line-height: 1;
     margin-bottom: 2rem;
   }
 
@@ -110,9 +78,7 @@
     padding: 0.4rem 0.9rem;
     border-radius: 4px;
     border: 1px solid;
-    cursor: default;
     white-space: nowrap;
-    transition: transform 0.15s ease, opacity 0.15s ease;
   }
 
   .slot-word.rolling {
@@ -120,8 +86,8 @@
   }
 
   @keyframes roll {
-    0%  { opacity: 0; transform: translateY(-6px); }
-    100%{ opacity: 1; transform: translateY(0); }
+    0%   { opacity: 0; transform: translateY(-6px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
   .mood-w  { background: var(--mood-bg);  border-color: var(--mood-border);  color: var(--mood-text); }
@@ -131,41 +97,30 @@
   .ctx-w   { background: var(--ctx-bg);   border-color: var(--ctx-border);   color: var(--ctx-text); }
   .tech-w  { background: var(--tech-bg);  border-color: var(--tech-border);  color: var(--tech-text); }
 
-  .slot-label {
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text3);
-  }
-
   .reroll-btn {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 2px 6px;
     border-radius: 3px;
-    transition: background 0.1s, color 0.1s;
     font-family: 'DM Mono', monospace;
+    transition: background 0.1s;
   }
+  .reroll-btn:hover { background: var(--bg3); }
+
   .mood-w  ~ .slot-controls .reroll-btn { color: var(--mood-text); }
   .type-w  ~ .slot-controls .reroll-btn { color: var(--type-text); }
   .style-w ~ .slot-controls .reroll-btn { color: var(--style-text); }
   .rel-w   ~ .slot-controls .reroll-btn { color: var(--rel-text); }
   .ctx-w   ~ .slot-controls .reroll-btn { color: var(--ctx-text); }
   .tech-w  ~ .slot-controls .reroll-btn { color: var(--tech-text); }
-  .reroll-btn:hover { background: var(--bg3); }
 
-  .slot-controls { display: flex; align-items: center; gap: 2px; }
+  .slot-controls { display: flex; align-items: center; }
 
-  .actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
+  .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
 
   .btn-primary {
     font-family: 'DM Mono', monospace;
@@ -174,36 +129,15 @@
     text-transform: uppercase;
     padding: 0.6rem 1.4rem;
     background: var(--accent);
-    color: #0f0f0f;
+    color: #faf9f7;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: opacity 0.15s;
     font-weight: 500;
+    transition: opacity 0.15s;
   }
-  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary:hover { opacity: 0.8; }
   .btn-primary:active { transform: scale(0.98); }
-
-  .btn-secondary {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.55rem 1.1rem;
-    background: none;
-    color: var(--text2);
-    border: 1px solid var(--border2);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: border-color 0.15s, color 0.15s;
-  }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 3rem 0;
-  }
 
   .legend {
     display: grid;
@@ -213,13 +147,9 @@
     border: 1px solid var(--border);
     border-radius: 6px;
     overflow: hidden;
-    margin-bottom: 3rem;
   }
 
-  .legend-cell {
-    background: var(--bg2);
-    padding: 1rem 1.1rem;
-  }
+  .legend-cell { background: var(--bg2); padding: 1rem 1.1rem; }
 
   .legend-key {
     font-size: 0.6rem;
@@ -243,240 +173,71 @@
   .ctx-key   { color: var(--ctx-text); }
   .tech-key  { color: var(--tech-text); }
 
-  .journal-section {}
-
-  .journal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-  }
-
-  .count-badge {
-    font-size: 0.65rem;
-    color: var(--text3);
-    letter-spacing: 0.1em;
-  }
-
-  .journal-empty {
-    text-align: center;
-    padding: 4rem 2rem;
-    border: 1px dashed var(--border);
-    border-radius: 6px;
-    color: var(--text3);
-    font-size: 0.75rem;
-    font-style: italic;
-    font-family: 'Fraunces', serif;
-  }
-
-  .entry-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-
-  .entry {
-    background: var(--bg2);
-    padding: 1.25rem 1.5rem;
-    transition: background 0.1s;
-  }
-  .entry:hover { background: var(--bg3); }
-
-  .entry-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .entry-prompt {
-    font-size: 0.82rem;
-    line-height: 1.6;
-    color: var(--text);
-    flex: 1;
-  }
-
-  .entry-date {
-    font-size: 0.62rem;
-    color: var(--text3);
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-    padding-top: 3px;
-  }
-
-  .entry-notes {
-    width: 100%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: var(--text2);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    padding: 0.5rem 0.75rem;
-    resize: none;
-    min-height: 36px;
-    line-height: 1.5;
-    transition: border-color 0.15s, min-height 0.15s;
-    overflow: hidden;
-  }
-  .entry-notes:focus {
-    outline: none;
-    border-color: var(--border2);
-    min-height: 60px;
-  }
-  .entry-notes::placeholder { color: var(--text3); font-style: italic; }
-
-  .entry-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 0.6rem;
-  }
-
-  .status-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--border2);
-    display: inline-block;
-  }
-  .status-dot.done { background: var(--style-text); }
-
-  .entry-actions {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .btn-tiny {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    color: var(--text3);
-    cursor: pointer;
-    transition: color 0.1s, border-color 0.1s;
-  }
-  .btn-tiny:hover { color: var(--text); border-color: var(--border2); }
-  .btn-tiny.danger:hover { color: #d47a7a; border-color: #5a2020; }
-  .btn-tiny.complete { color: var(--style-text); border-color: var(--style-border); }
-
-  .toast {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    background: var(--accent);
-    color: #0f0f0f;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    padding: 0.5rem 1.25rem;
-    border-radius: 4px;
-    opacity: 0;
-    transition: opacity 0.2s, transform 0.2s;
-    pointer-events: none;
-  }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 0.5rem;
-  }
-
-  .tag {
-    font-size: 0.58rem;
-    letter-spacing: 0.07em;
-    padding: 2px 7px;
-    border-radius: 3px;
-    border: 1px solid;
-  }
-
   @media (max-width: 600px) {
-    header { padding: 1.5rem; }
-    main { padding: 2rem 1.25rem 5rem; }
+    main { padding: 2rem 1.25rem 4rem; }
     .legend { grid-template-columns: repeat(2, 1fr); }
-    .sentence { gap: 0.4rem; }
     .slot-word { font-size: 0.8rem; padding: 0.35rem 0.7rem; }
   }
 </style>
 </head>
 <body>
-
-<header>
-  <h1>MC Build Wheel</h1>
-  <span>prompt generator + journal</span>
-</header>
-
 <main>
-  <div class="prompt-area">
-    <p class="section-label">Today's build</p>
+  <p class="section-label">Today's build</p>
 
-    <div class="sentence" id="sentence">
-      <span class="connector">A</span>
+  <div class="sentence">
+    <span class="connector">A</span>
 
-      <div class="slot" id="slot-mood">
-        <span class="slot-word mood-w" id="w-mood">forgotten</span>
-        <div class="slot-controls">
-          <button class="reroll-btn" onclick="spinOne('mood')" title="Reroll mood">↺ mood</button>
-        </div>
-      </div>
-
-      <div class="slot" id="slot-style">
-        <span class="slot-word style-w" id="w-style">gothic</span>
-        <div class="slot-controls">
-          <button class="reroll-btn" onclick="spinOne('style')" title="Reroll style">↺ style</button>
-        </div>
-      </div>
-
-      <div class="slot" id="slot-type">
-        <span class="slot-word type-w" id="w-type">tower</span>
-        <div class="slot-controls">
-          <button class="reroll-btn" onclick="spinOne('type')" title="Reroll build type">↺ type</button>
-        </div>
-      </div>
-
-      <span class="connector">,</span>
-
-      <div class="slot" id="slot-rel">
-        <span class="slot-word rel-w" id="w-rel">emerging from</span>
-        <div class="slot-controls">
-          <button class="reroll-btn" onclick="spinOne('rel')" title="Reroll relationship">↺ relation</button>
-        </div>
-      </div>
-
-      <span class="connector">a</span>
-
-      <div class="slot" id="slot-ctx">
-        <span class="slot-word ctx-w" id="w-ctx">dense forest canopy</span>
-        <div class="slot-controls">
-          <button class="reroll-btn" onclick="spinOne('ctx')" title="Reroll context">↺ context</button>
-        </div>
-      </div>
-
-      <span class="connector">, using</span>
-
-      <div class="slot" id="slot-tech">
-        <span class="slot-word tech-w" id="w-tech">silhouette framing</span>
-        <div class="slot-controls">
-          <button class="reroll-btn" onclick="spinOne('tech')" title="Reroll technique">↺ technique</button>
-        </div>
+    <div class="slot">
+      <span class="slot-word mood-w" id="w-mood">forgotten</span>
+      <div class="slot-controls">
+        <button class="reroll-btn" onclick="spinOne('mood')">↺ mood</button>
       </div>
     </div>
 
-    <div class="actions">
-      <button class="btn-primary" onclick="spinAll()">Spin all</button>
-      <button class="btn-secondary" onclick="savePrompt()">Save to journal</button>
+    <div class="slot">
+      <span class="slot-word style-w" id="w-style">gothic</span>
+      <div class="slot-controls">
+        <button class="reroll-btn" onclick="spinOne('style')">↺ style</button>
+      </div>
     </div>
+
+    <div class="slot">
+      <span class="slot-word type-w" id="w-type">tower</span>
+      <div class="slot-controls">
+        <button class="reroll-btn" onclick="spinOne('type')">↺ type</button>
+      </div>
+    </div>
+
+    <span class="connector">,</span>
+
+    <div class="slot">
+      <span class="slot-word rel-w" id="w-rel">emerging from</span>
+      <div class="slot-controls">
+        <button class="reroll-btn" onclick="spinOne('rel')">↺ relation</button>
+      </div>
+    </div>
+
+    <span class="connector">a</span>
+
+    <div class="slot">
+      <span class="slot-word ctx-w" id="w-ctx">dense forest canopy</span>
+      <div class="slot-controls">
+        <button class="reroll-btn" onclick="spinOne('ctx')">↺ context</button>
+      </div>
+    </div>
+
+    <span class="connector">, using</span>
+
+    <div class="slot">
+      <span class="slot-word tech-w" id="w-tech">silhouette framing</span>
+      <div class="slot-controls">
+        <button class="reroll-btn" onclick="spinOne('tech')">↺ technique</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-primary" onclick="spinAll()">Spin all</button>
   </div>
 
   <div class="legend">
@@ -505,23 +266,7 @@
       <div class="legend-val">The skill constraint — stops you defaulting to habit</div>
     </div>
   </div>
-
-  <div class="divider"></div>
-
-  <div class="journal-section">
-    <div class="journal-header">
-      <p class="section-label">Build journal</p>
-      <span class="count-badge" id="entry-count">0 builds</span>
-    </div>
-    <div id="journal-list">
-      <div class="journal-empty" id="empty-state">
-        No builds yet — spin a prompt and save it to get started.
-      </div>
-    </div>
-  </div>
 </main>
-
-<div class="toast" id="toast">Saved to journal</div>
 
 <script>
 const pools = {
@@ -530,29 +275,26 @@ const pools = {
     'sacred','hollow','sunken','wild','crumbling','desolate','enchanted','cursed',
     'prosperous','abandoned','mystical','haunted','timeworn','tranquil','eerie',
     'forbidden','reclaimed','weathered','isolated','magnificent','decrepit',
-    'lush','smouldering','windswept','submerged','overpowered','bleached',
-    'frozen in time','contested','long-dead','newly awakened'
+    'lush','smouldering','windswept','submerged','bleached','frozen in time',
+    'contested','long-dead','newly awakened','overpowered'
   ],
   style: [
     'gothic','brutalist','elven','cottagecore','industrial','crystalline',
     'nautical','Japanese','cave-dweller','nomadic','baroque','Art Deco',
     'Viking','Roman','Aztec','steampunk','medieval','Georgian','futuristic',
     'Moorish','Byzantine','Zen','neo-classical','Scandinavian','hobbit-hole',
-    'arctic','Mesoamerican','desert nomad','deep-sea','Soviet','Georgian colonial',
-    'Mughal','Ottoman','Shinto','Brutalist Soviet','bamboo folk','tundra folk',
-    'overgrown ruin','post-collapse','biopunk'
+    'arctic','Mesoamerican','desert nomad','deep-sea','Soviet',
+    'Mughal','Ottoman','Shinto','bamboo folk','tundra folk',
+    'overgrown ruin','post-collapse','biopunk','Georgian colonial'
   ],
   type: [
-    // buildings
     'tower','lighthouse','cathedral','castle keep','bridge','market hall',
     'windmill','greenhouse','bathhouse','library','observatory','prison',
     'tavern','manor house','gatehouse','barracks','temple','shrine','mausoleum',
     'aqueduct','colosseum','forge','apothecary','mill','bell tower','crypt',
-    // organics
     'giant tree','creature skull','mushroom cluster','coral reef','whale skeleton',
     'serpent','root tangle','beehive','termite mound','jellyfish','giant crab claw',
     'flowering vine arch','nest','antler arch','bone pile','cocoon','mycelium web',
-    // terraforming
     'floating island','volcanic vent','glacier','mesa canyon','cave mouth',
     'crater lake','river delta','waterfall cliff','sinkhole','tidal pools',
     'mountain pass','underground lake','eroded sea arch','desert dunes',
@@ -574,7 +316,7 @@ const pools = {
     'volcanic archipelago','nether wastes','end islands','deep ocean trench',
     'snowy peaks','badlands plateau','cherry blossom grove','sunflower plains',
     'mangrove swamp','deep dark biome','ancient city ruins','coral sea',
-    'jagged limestone karst','obsidian flats','mesa at dusk','birch clearing',
+    'jagged limestone karst','obsidian flats','birch clearing',
     'abandoned mineshaft','windswept highlands','eroded coastline'
   ],
   tech: [
@@ -586,11 +328,11 @@ const pools = {
     'functional redstone detail','item scatter storytelling',
     'roofline complexity','foundation storytelling (what lies beneath)',
     'exterior weathering','window light composition','height contrast',
-    'negative space (what you don\'t build)','rule of thirds',
+    "negative space (what you don't build)",'rule of thirds',
     'frame within a frame','single light source drama',
     'texture mixing (smooth + rough adjacent)','structural impossibility',
     'environmental storytelling','living vs dead contrast',
-    'palette locked to one biome\'s blocks','no straight lines',
+    "palette locked to one biome's blocks",'no straight lines',
     'build from the inside out','elevation narrative (story in layers)',
     'deliberate incompleteness','monochrome palette',
     'one focal block used sparingly','micro-detailing only (no macro shapes)'
@@ -621,130 +363,7 @@ function spinAll() {
   });
 }
 
-function getCurrentPrompt() {
-  return `A ${document.getElementById('w-mood').textContent} ${document.getElementById('w-style').textContent} ${document.getElementById('w-type').textContent}, ${document.getElementById('w-rel').textContent} a ${document.getElementById('w-ctx').textContent}, using ${document.getElementById('w-tech').textContent}.`;
-}
-
-function getSlotValues() {
-  return {
-    mood: document.getElementById('w-mood').textContent,
-    style: document.getElementById('w-style').textContent,
-    type: document.getElementById('w-type').textContent,
-    rel: document.getElementById('w-rel').textContent,
-    ctx: document.getElementById('w-ctx').textContent,
-    tech: document.getElementById('w-tech').textContent,
-  };
-}
-
-function loadJournal() {
-  try { return JSON.parse(localStorage.getItem('mc-journal') || '[]'); } catch { return []; }
-}
-
-function saveJournal(entries) {
-  localStorage.setItem('mc-journal', JSON.stringify(entries));
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2000);
-}
-
-function savePrompt() {
-  const entries = loadJournal();
-  const entry = {
-    id: Date.now(),
-    prompt: getCurrentPrompt(),
-    slots: getSlotValues(),
-    date: new Date().toLocaleDateString('en-AU', { day:'numeric', month:'short', year:'numeric' }),
-    notes: '',
-    done: false
-  };
-  entries.unshift(entry);
-  saveJournal(entries);
-  renderJournal();
-  showToast('Saved to journal');
-}
-
-function deleteEntry(id) {
-  const entries = loadJournal().filter(e => e.id !== id);
-  saveJournal(entries);
-  renderJournal();
-}
-
-function toggleDone(id) {
-  const entries = loadJournal();
-  const e = entries.find(e => e.id === id);
-  if (e) e.done = !e.done;
-  saveJournal(entries);
-  renderJournal();
-}
-
-function updateNotes(id, val) {
-  const entries = loadJournal();
-  const e = entries.find(e => e.id === id);
-  if (e) e.notes = val;
-  saveJournal(entries);
-}
-
-function tagColor(key, val) {
-  const map = { mood:'mood', style:'style', type:'type', rel:'rel', ctx:'ctx', tech:'tech' };
-  const cls = map[key] || 'mood';
-  return `background:var(--${cls}-bg);border-color:var(--${cls}-border);color:var(--${cls}-text)`;
-}
-
-function renderJournal() {
-  const entries = loadJournal();
-  const list = document.getElementById('journal-list');
-  const empty = document.getElementById('empty-state');
-  const count = document.getElementById('entry-count');
-
-  count.textContent = `${entries.length} build${entries.length !== 1 ? 's' : ''}`;
-
-  if (entries.length === 0) {
-    list.innerHTML = '';
-    list.appendChild(empty || (() => {
-      const d = document.createElement('div');
-      d.className = 'journal-empty';
-      d.id = 'empty-state';
-      d.textContent = 'No builds yet — spin a prompt and save it to get started.';
-      return d;
-    })());
-    return;
-  }
-
-  const slotKeys = ['mood','style','type','rel','ctx','tech'];
-  const slotLabels = { mood:'mood', style:'style', type:'type', rel:'relation', ctx:'context', tech:'technique' };
-
-  list.innerHTML = `<div class="entry-list">${entries.map(e => `
-    <div class="entry" id="entry-${e.id}">
-      <div class="entry-top">
-        <div class="entry-prompt">${e.prompt}</div>
-        <div class="entry-date">${e.date}</div>
-      </div>
-      <div class="tags">
-        ${slotKeys.map(k => `<span class="tag" style="${tagColor(k, e.slots?.[k])}">${slotLabels[k]}: ${e.slots?.[k] || '—'}</span>`).join('')}
-      </div>
-      <textarea
-        class="entry-notes"
-        placeholder="notes on the build..."
-        onchange="updateNotes(${e.id}, this.value)"
-        oninput="this.style.minHeight=''; this.style.minHeight=this.scrollHeight+'px'"
-      >${e.notes}</textarea>
-      <div class="entry-footer">
-        <span class="status-dot ${e.done ? 'done' : ''}" title="${e.done ? 'Completed' : 'In progress'}"></span>
-        <div class="entry-actions">
-          <button class="btn-tiny ${e.done ? 'complete' : ''}" onclick="toggleDone(${e.id})">${e.done ? 'done ✓' : 'mark done'}</button>
-          <button class="btn-tiny danger" onclick="deleteEntry(${e.id})">delete</button>
-        </div>
-      </div>
-    </div>
-  `).join('')}</div>`;
-}
-
 spinAll();
-renderJournal();
 </script>
 </body>
 </html>
